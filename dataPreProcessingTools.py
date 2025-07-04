@@ -6,6 +6,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 # Importing the Dataset
 dataset = pd.read_csv('Data.csv')
@@ -49,3 +50,8 @@ print("y_train:", y_train)
 print("y_test:", y_test)
 
 # Feature Scaling
+sc = StandardScaler()
+X_train[:, 3:] = sc.fit_transform(X_train[:, 3:])
+X_test[:, 3:] = sc.transform(X_test[:, 3:])
+print("Scaled X_train:", X_train)
+print("Scaled X_test:", X_test)
